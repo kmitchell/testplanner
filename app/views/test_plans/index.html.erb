@@ -1,0 +1,13 @@
+<h1>Testplans</h1>
+
+<ul id="test_plans">
+  <% @test_plans.each do |tp| %>
+    <li>
+      <%= link_to tp.name, test_plan_path(tp), 
+      class: 'test_plan_name', id: "test_plan_#{tp.id}" %>
+      <p>Created by: <%= tp.author %></p>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Create a New Test Plan", new_test_plan_path, class: "new_test_plan" %>

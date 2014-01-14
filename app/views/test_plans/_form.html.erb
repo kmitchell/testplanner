@@ -1,0 +1,18 @@
+<%= form_for(@test_plan) do |f| %>
+  <ul>
+  <% @test_plan.errors.full_messages.each do |error| %>
+    <li><%= error %></li>
+  <% end %>
+  </ul>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :author %><br />
+    <%= f.text_field :author %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
