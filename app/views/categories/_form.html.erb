@@ -1,0 +1,6 @@
+<h3>Enter a category title</h3>
+
+<%= simple_form_for [@test_plan, @category] do |f| %>
+  <p><%= f.input :title, :input_html => { :class => "span6" } %></p>
+  <p><%= f.submit 'Submit' %></p>
+<% end %>

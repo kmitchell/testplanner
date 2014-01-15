@@ -1,10 +1,6 @@
 <h3>Enter a test case</h3>
 
-<%= simple_form_for [@test_plan, @test_case] do |f| %>
-  <p>
-    <%= f.input :description, :input_html => { :class => "span6" } %>
-  </p>
-  <p>
-    <%= f.submit 'Submit' %>
-  </p>
+<%= simple_form_for [@test_plan, @category, @test_case] do |f| %>
+  <p><%= f.input :description, :input_html => { :class => "span6" } %></p>
+  <p><%= f.submit 'Submit' %></p>
 <% end %>

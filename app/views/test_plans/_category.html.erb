@@ -1,0 +1,6 @@
+<div>
+  <p class="category"><%= category.title %></p>
+</div>
+<%= render partial: 'test_plans/test_case', collection: @category.test_cases %>
+<br />
+<%= render partial: 'test_cases/form' %>

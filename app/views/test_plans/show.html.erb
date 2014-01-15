@@ -1,8 +1,27 @@
-<h1><%= @test_plan.name %></h1>
+<!-- <h1><%= @test_plan.name %></h1>
 <p>Created by <%= @test_plan.author %></p>
 <br />
-<h3>Test Cases (<%= @test_plan.test_cases.size %>):</h3>
-<%= render partial: 'test_plans/test_case', collection: @test_plan.test_cases %>
+<h3>Test Cases (<%= @test_plan.categories.size %>):</h3>
+<%#= render partial: 'test_plans/category', collection: @test_plan.categories %>
 <br />
-<%= render partial: 'test_cases/form' %>
-<br />
+<%#= render partial: 'categories/form' %>
+<br /> -->
+
+
+<h1><%= @test_plan.name %></h1>
+
+<ol class="categories">
+<% @test_plan.categories.each do |category| %>
+  <li>
+    <%= category.title %>
+    <ol class="test_cases">
+      <% category.test_cases.each do |testcase| %>
+        <li><%= testcase.description %></li>
+      <% end %>
+    </ol>
+  </li>
+<% end %>
+</ol>
+
+<%= link_to 'Edit', edit_test_plan_path(@test_plan) %> |
+<%= link_to 'Back to Test Plans', test_plans_path %>

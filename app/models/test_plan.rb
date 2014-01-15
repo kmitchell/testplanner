@@ -1,4 +1,4 @@
 class TestPlan < ActiveRecord::Base
   has_many :categories
-  has_many :test_cases
+  accepts_nested_attributes_for :categories
 end

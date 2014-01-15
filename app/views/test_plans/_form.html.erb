@@ -4,15 +4,23 @@
     <li><%= error %></li>
   <% end %>
   </ul>
-  <p>
+
+  <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
-  </p>
-  <p>
+  </div>
+
+  <div class="field">
     <%= f.label :author %><br />
     <%= f.text_field :author %>
-  </p>
-  <p>
+  </div>
+
+  <%= f.fields_for :categories do |category| %>
+    <%= render 'category_fields', f: category %>
+  <% end %><br />
+  <%= link_to_add_fields "Add Category", f, :categories %>
+
+  <div class="actions">
     <%= f.submit %>
-  </p>
+  </div>
 <% end %>
