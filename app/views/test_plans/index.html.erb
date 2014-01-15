@@ -2,12 +2,11 @@
 
 <ul id="test_plans">
   <% @test_plans.each do |tp| %>
-    <li>
-      <%= link_to tp.name, test_plan_path(tp), 
-      class: 'test_plan_name', id: "test_plan_#{tp.id}" %>
-      <p>Created by: <%= tp.author %></p>
-    </li>
+    <div class="test_plan">
+      <h3><%= link_to tp.name, tp %></h3>
+        <p>Created by: <%= tp.author %></p>
+      <%= pluralize(tp.categories.size, "Category") %><br />
+      <%#= pluralize(tp.categories.test_cases.size, "Test Case") %>
+    </div>
   <% end %>
 </ul>
-
-<%= link_to "Create a New Test Plan", new_test_plan_path, class: "new_test_plan" %>

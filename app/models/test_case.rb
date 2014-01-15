@@ -1,4 +1,4 @@
 class TestCase < ActiveRecord::Base
+  attr_accessible :description, :category_id
   belongs_to :category
-  belongs_to :test_plan
 end
