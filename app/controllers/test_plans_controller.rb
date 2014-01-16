@@ -1,4 +1,5 @@
 class TestPlansController < ApplicationController
+  before_action :set_feature
 
   def index
     @test_plans = TestPlan.all
@@ -10,6 +11,7 @@ class TestPlansController < ApplicationController
 
   def show
     @test_plan = TestPlan.find(params[:id])
+    @feature = Feature.find(params[:feature_id])
   end
 
   def edit
@@ -18,14 +20,16 @@ class TestPlansController < ApplicationController
 
   def create
     @test_plan = TestPlan.new(params[:test_plan])
+    @test_plan.feature_id = params[:feature_id]
     @test_plan.save
-    redirect_to @test_plan
+    redirect_to @feature
   end
 
   def update
     @test_plan = TestPlan.find(params[:id])
+    @feature = Feature.find(params[:feature_id])
     if @test_plan.update_attributes(params[:test_plan])
-      redirect_to @test_plan
+      redirect_to @feature
     else
       render :edit
     end
@@ -37,10 +41,9 @@ class TestPlansController < ApplicationController
     redirect_to test_plan_url, notice: "Successfully destroyed testplan."
   end
 
-# private
-#   def test_plan_params
-#     params.require(:test_plan).permit(:name, :author, :created_at, :updated_at, 
-#                                       categories_attributes: [:test_plan_id, :title])
-#   end
+private
+  def set_feature
+    @feature = Feature.find params[:feature_id]
+  end 
 
 end

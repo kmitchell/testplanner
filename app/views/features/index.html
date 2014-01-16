@@ -1,0 +1,9 @@
+<h1>Features</h1>
+
+<ul id="features">
+  <% @features.each do |feature| %>
+    <div class="test_plan">
+      <h3><%= link_to feature.name, feature %></h3>
+    </div>
+  <% end %>
+</ul>

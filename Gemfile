@@ -13,6 +13,7 @@ gem 'figaro'
 gem 'protected_attributes'
 gem 'high_voltage'
 gem 'simple_form'
+gem 'simple-navigation-bootstrap'
 gem 'thin'
 group :development do
   gem 'better_errors'

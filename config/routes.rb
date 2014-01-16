@@ -1,4 +1,6 @@
 Testplanner::Application.routes.draw do
-  resources :test_plans
-  root :to => 'test_plans#index'
+  resources :features do
+    resources :test_plans
+  end
+  root :to => 'features#index'
 end

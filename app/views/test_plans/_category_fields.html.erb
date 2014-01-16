@@ -6,5 +6,5 @@
   <%= f.fields_for :test_cases do |testcases| %>
     <%= render 'test_case_fields', f: testcases %>
   <% end %>
-  <%= link_to_add_fields "Add Test Case", f, :test_cases %>
+  <%= link_to_add_fields "Add Test Case", f, :test_cases %><br />
 </fieldset>

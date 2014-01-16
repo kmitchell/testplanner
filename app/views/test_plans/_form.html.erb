@@ -1,30 +1,27 @@
-<%= form_for @test_plan do |f| %>
-  <% if @test_plan.errors.any? %>
-    <div class="error_messages">
-      <h2><%= pluralize(@test_plan.errors.count, "error") %> prohibited this test plan from being saved:</h2>
-      <ul>
-      <% @test_plan.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<div>
+  <br />
+  <%= simple_form_for([@feature, @test_plan]) do |f| %>
+    <%= f.error_notification %>
+      <div class="form-inline" role="form">
+        <div class="form-group">
+          <div>
+            <%= f.input :name, label: 'Title', :placeholder => 'Title' %>
+          </div>
+        </div>
+        <br /><br />
+        <div class="form-group">
+          <div>
+            <%= f.input :author, label: 'Author', :placeholder => 'Author' %>
+          </div>
+        </div>
+      </div>
+      <br />
+    <%= f.fields_for :categories do |builder| %>
+      <%= render 'category_fields', f: builder %>
+    <% end %>
+    <%= link_to_add_fields "Add category", f, :categories, :test_cases %>
+
+    <div class="actions">
+      <%= f.submit "Create", :class =>"btn btn-primary" %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :author %><br />
-    <%= f.text_field :author %>
-  </div>
-
-  <%= f.fields_for :categories do |builder| %>
-    <%= render 'category_fields', f: builder %>
-  <% end %>
-  <%= link_to_add_fields "Add category", f, :categories, :test_cases %>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
