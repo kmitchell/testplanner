@@ -1,16 +1,28 @@
-<%= simple_form_for(@test_plan, :html => { :class => 'form-horizontal' }) do |f| %>
-  <ul>
-  <% @test_plan.errors.full_messages.each do |error| %>
-    <li><%= error %></li>
+<%= form_for @test_plan do |f| %>
+  <% if @test_plan.errors.any? %>
+    <div class="error_messages">
+      <h2><%= pluralize(@test_plan.errors.count, "error") %> prohibited this test plan from being saved:</h2>
+      <ul>
+      <% @test_plan.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
   <% end %>
-  </ul>
-  <%= f.input :name, :input_html => { :class => "span6" } %>
-  <%= f.input :author, :input_html => { :class => "span6" } %>
-  <br />
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :author %><br />
+    <%= f.text_field :author %>
+  </div>
+
   <%= f.fields_for :categories do |builder| %>
     <%= render 'category_fields', f: builder %>
-  <% end %><br /><br />
-  <%= link_to_add_fields "Add Category", f, :categories %>
+  <% end %>
+  <%= link_to_add_fields "Add category", f, :categories, :test_cases %>
 
   <div class="actions">
     <%= f.submit %>
