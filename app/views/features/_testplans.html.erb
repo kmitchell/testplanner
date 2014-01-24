@@ -1,12 +1,15 @@
-<h1>Testplans</h1>
-
-  <ul id="test_plans">
-    <% @feature.test_plans.each do |tp| %>
-      <div class="test_plan">
-        <h3><%= link_to tp.name, [@feature, tp] %></h3>
-        <%= pluralize(tp.categories.size, "Category") %><br />
-      </div>
+<h1>Testplans
+  <small>
+    <%= link_to new_feature_test_plan_path(@feature, @test_plan) do %>
+      <i class="glyphicon glyphicon-plus-sign"></i>
     <% end %>
-  </ul>
-
-  <%= link_to "Make a new test plan", new_feature_test_plan_path(@feature, @test_plan) %>
+  </small>
+</h1>
+<ul id="test_plans">
+  <% @feature.test_plans.each do |tp| %>
+    <div class="test_plan">
+      <h3><%= link_to tp.name, [@feature, tp] %></h3>
+      <%= pluralize(tp.categories.size, "Category") %><br />
+    </div>
+  <% end %>
+</ul>

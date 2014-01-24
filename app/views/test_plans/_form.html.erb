@@ -1,27 +1,25 @@
 <div>
-  <br />
-  <%= simple_form_for([@feature, @test_plan]) do |f| %>
-    <%= f.error_notification %>
-      <div class="form-inline" role="form">
-        <div class="form-group">
-          <div>
-            <%= f.input :name, label: 'Title', :placeholder => 'Title' %>
-          </div>
+  <%= form_for([@feature, @test_plan], :html => { :class => "form-inline" }) do |f| %>
+    <legend>Create a new test plan</legend>
+      <div class="form-group">
+        <div class="form">
+          <%= f.text_field :name, label: 'Title', :placeholder => 'Title' %>
         </div>
-        <br /><br />
-        <div class="form-group">
-          <div>
-            <%= f.input :author, label: 'Author', :placeholder => 'Author' %>
-          </div>
+      </div>
+      <div class="form-group">
+        <div>
+          <%= f.text_field :author, label: 'Author', :class => "form-horizontal", :placeholder => 'Author' %>
         </div>
       </div>
       <br />
     <%= f.fields_for :categories do |builder| %>
       <%= render 'category_fields', f: builder %>
     <% end %>
-    <%= link_to_add_fields "Add category", f, :categories, :test_cases %>
-
+  <br />
+    <%= link_to_add_fields "Add Category", f, :categories, :test_cases %>
+  <br /><br />
     <div class="actions">
       <%= f.submit "Create", :class =>"btn btn-primary" %>
     </div>
   <% end %>
+</div>

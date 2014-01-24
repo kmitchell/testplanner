@@ -1,9 +1,19 @@
 <div class="container">
-  <h1><%= @feature.name %></h1>
-  <div class="row">
-    <div class="span2">
-      <%= render 'testplans' %>
-    </div>
-  </div>
+  <h1><%= @feature.name %>
+    <small>
+      <%= link_to edit_feature_path(@feature) do %>
+        <i class="glyphicon glyphicon-pencil"></i>
+      <% end %>
+    </small>
+  </h1>
 </div>
-
+<div class="container">
+  <p class="lead">
+    Team members: <%= @feature.team_member %><br />
+    Group link: <%= @feature.group_link %><br />
+    Spec Link: <%= @feature.spec_link %>
+  </p>
+</div>
+<div class="container">
+  <%= render 'testplans' %>
+</div>

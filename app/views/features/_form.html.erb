@@ -1,19 +1,38 @@
 <div class="text-center">
   <br />
-  <%= simple_form_for @feature do |f| %>
-    <%= f.error_notification %>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4 col-md-offset-4">
-            <%= f.input :name, label: false, :placeholder => 'Feature name',
-              :class => "col-md-12" %>
-          </div>
+  <%= form_for @feature do |f| %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+          <%= f.text_field :name, label: false, :placeholder => 'Feature name',
+            :class => "col-md-12" %>
         </div>
-        <br />
-        <div class="row">
-          <div class="col-md-4 col-md-offset-4">
-            <%= f.submit "Create", :class => "btn btn-primary"%>
-          </div>
+      </div>
+    <br />
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+          <%= f.text_field :team_member, label: false, :placeholder => 'Team members',
+            :class => "col-md-12" %>
+        </div>
+      </div>
+    <br />
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+          <%= f.text_field :group_link, label: false, :placeholder => 'Link to group',
+            :class => "col-md-12" %>
+        </div>
+      </div>
+    <br />
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+          <%= f.text_field :spec_link, label: false, :placeholder => 'Link to spec',
+            :class => "col-md-12" %>
+        </div>
+      </div>
+    <br />
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+          <%= f.submit "Create", :class => "btn btn-primary"%>
         </div>
       </div>
     </div>

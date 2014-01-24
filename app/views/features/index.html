@@ -1,4 +1,10 @@
-<h1>Features</h1>
+<h1>Features 
+  <small>
+    <%= link_to new_feature_path(@feature) do %>
+      <i class="glyphicon glyphicon-plus-sign"></i>
+    <% end %>
+  </small>
+</h1>
 
 <ul id="features">
   <% @features.each do |feature| %>
